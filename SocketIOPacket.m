@@ -32,7 +32,8 @@
 {
     self = [super init];
     if (self) {
-        _types = [NSArray arrayWithObjects: @"disconnect",
+        _types = [NSArray arrayWithObjects:
+                  @"disconnect",
                   @"connect",
                   @"heartbeat",
                   @"message",

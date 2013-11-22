@@ -24,10 +24,10 @@
 #import "SocketIOTransportXHR.h"
 #import "SocketIO.h"
 
-#define DEBUG_LOGS 0
+#define DEBUG_LOGS 1
 
 #if DEBUG_LOGS
-#define DEBUGLOG(...) NSLog(__VA_ARGS__)
+#define DEBUGLOG(...) LOG_SOCKET(__VA_ARGS__)
 #else
 #define DEBUGLOG(...)
 #endif
