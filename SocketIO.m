@@ -749,21 +749,27 @@ NSString* const SocketIOException = @"SocketIOException";
         NSArray *transports = [t componentsSeparatedByString:@","];
         DEBUGLOG(@"transports: %@", transports);
         
+#if !(TARGET_IPHONE_SIMULATOR)
         if ([transports indexOfObject:@"websocket"] != NSNotFound) {
             DEBUGLOG(@"websocket supported -> using it now");
             _transport = [[SocketIOTransportWebsocket alloc] initWithDelegate:self];
         }
-        else if ([transports indexOfObject:@"xhr-polling"] != NSNotFound) {
-            DEBUGLOG(@"xhr polling supported -> using it now");
-            _transport = [[SocketIOTransportXHR alloc] initWithDelegate:self];
-        }
         else {
-            DEBUGLOG(@"no transport found that is supported :( -> fail");
-            connectionFailed = true;
-            error = [NSError errorWithDomain:SocketIOError
-                                        code:SocketIOTransportsNotSupported
-                                    userInfo:nil];
+#endif
+            if ([transports indexOfObject:@"xhr-polling"] != NSNotFound) {
+                DEBUGLOG(@"xhr polling supported -> using it now");
+                _transport = [[SocketIOTransportXHR alloc] initWithDelegate:self];
+            }
+            else {
+                DEBUGLOG(@"no transport found that is supported :( -> fail");
+                connectionFailed = true;
+                error = [NSError errorWithDomain:SocketIOError
+                                            code:SocketIOTransportsNotSupported
+                                        userInfo:nil];
+            }
+#if !(TARGET_IPHONE_SIMULATOR)
         }
+#endif
     }
     
     // if connection didn't return the values we need -> fail
