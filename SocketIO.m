@@ -21,6 +21,8 @@
 #import "SocketIO.h"
 #import "SocketIOPacket.h"
 #import "SocketIOJSONSerialization.h"
+#import "SocketIOTransportWebsocket.h"
+#import "SocketIOTransportXHR.h"
 
 #ifdef DEBUG
 #define DEBUG_LOGS 1
@@ -757,10 +759,12 @@ static NSString* const SocketIOException = @"SocketIOException";
         static Class xhrTransportClass;
         
         if (webSocketTransportClass == nil) {
-            webSocketTransportClass = NSClassFromString(@"SocketIOTransportWebsocket");
+//            webSocketTransportClass = NSClassFromString(@"SocketIOTransportWebsocket");
+            webSocketTransportClass = [SocketIOTransportWebsocket class];
         }
         if (xhrTransportClass == nil) {
-            xhrTransportClass = NSClassFromString(@"SocketIOTransportXHR");
+//            xhrTransportClass = NSClassFromString(@"SocketIOTransportXHR");
+            xhrTransportClass = [SocketIOTransportXHR class];
         }
         
 #if !(TARGET_IPHONE_SIMULATOR)
