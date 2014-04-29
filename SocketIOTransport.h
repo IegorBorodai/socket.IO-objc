@@ -18,8 +18,6 @@
 //    https://github.com/pkyeck/socket.IO-objc/blob/master/CONTRIBUTORS.md
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol SocketIOTransportDelegate <NSObject>
 
 - (void) onData:(id)message;

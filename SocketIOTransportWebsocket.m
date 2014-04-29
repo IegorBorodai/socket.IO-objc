@@ -42,7 +42,7 @@ static NSString* kSecureSocketPortURL = @"wss://%@:%d/socket.io/1/websocket/%@";
 
 - (id) initWithDelegate:(id<SocketIOTransportDelegate>)delegate_
 {
-    self = [super init];
+    (self = [super init]);
     if (self) {
         self.delegate = delegate_;
     }

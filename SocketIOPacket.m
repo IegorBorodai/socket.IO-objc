@@ -27,7 +27,7 @@
 
 - (id) init
 {
-    self = [super init];
+    (self = [super init]);
     if (self) {
         _types = [NSArray arrayWithObjects:
                   @"disconnect",

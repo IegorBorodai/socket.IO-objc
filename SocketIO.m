@@ -41,10 +41,10 @@ static NSString* kHandshakeURL = @"%@://%@%@/%@/1/?t=%.0f%@";
 static NSString* kHandshakeURLWithoutPort = @"%@://%@/%@/1/?t=%.0f%@";
 static NSString* kForceDisconnectURL = @"%@://%@%@/%@/1/xhr-polling/%@?disconnect";
 
-float const defaultConnectionTimeout = 10.0f;
+static float const defaultConnectionTimeout = 10.0f;
 
 NSString* const SocketIOError     = @"SocketIOError";
-NSString* const SocketIOException = @"SocketIOException";
+static NSString* const SocketIOException = @"SocketIOException";
 
 # pragma mark -
 # pragma mark SocketIO's private interface
@@ -84,7 +84,7 @@ NSString* const SocketIOException = @"SocketIOException";
 
 - (id) initWithDelegate:(id<SocketIODelegate>)delegate
 {
-    self = [super init];
+    (self = [super init]);
     if (self) {
         _delegate = delegate;
         _queue = [[NSMutableArray alloc] init];

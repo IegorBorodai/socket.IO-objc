@@ -47,7 +47,7 @@ static NSString* kSecureXHRPortURL = @"https://%@:%d/socket.io/1/xhr-polling/%@"
 
 - (id) initWithDelegate:(id<SocketIOTransportDelegate>)delegate_
 {
-    self = [super init];
+    (self = [super init]);
     if (self) {
         self.delegate = delegate_;
         _data = [[NSMutableData alloc] init];
